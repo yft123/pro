@@ -1,0 +1,69 @@
+.site-info {
+    padding: 30px 0;
+    font-size: 12px;
+    background: #fafafa;
+    overflow: hidden;
+}
+
+.site-info .logo {
+    float: left;
+    width: 57px;
+    height: 57px;
+    margin-right: 10px;
+    background: url(/homes/img/favicon.ico) no-repeat 50% 50%;
+}
+
+.site-info .info-text {
+    float: left;
+    color: #b0b0b0;
+}
+
+.site-info .info-text p {
+    margin: 0;
+    line-height: 18px;
+}
+
+.site-info .info-text a {
+    color: #b0b0b0;
+}
+
+.site-info .info-text a:hover {
+    color: #ff6700;
+}
+
+.site-info .info-text .sites a {
+    color: #757575;
+}
+
+.site-info .info-text .sites a:hover {
+    color: #ff6700;
+}
+
+.site-info .info-links {
+    float: right;
+    _display: inline;
+    height: 28px;
+    margin: 4px 0 0;
+}
+
+.site-info .info-links img {
+    width: auto;
+    height: 28px;
+    margin-left: 0px;
+}
+
+.site-info .slogan {
+    /*clear: both;*/
+    margin: 30px auto 0;
+    width: 267px;
+    height: 19px;
+}
+
+.site-info .ir {
+    display: block;
+    text-align: left;
+    text-indent: -9999em;
+    overflow: hidden;
+    _zoom: 1
+}
+
