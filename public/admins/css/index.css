@@ -1,0 +1,15 @@
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.color307fb1{color: #307fb1;}
+.span4{ width:39.97%;}
+.span6{ width:59.97%;}
+.pr5{padding-right: 5px;}
+.pl15{padding-left: 15px}
+.pt15{padding-top: 15px}
+.box_top{height: 37px; line-height: 37px;}
+.box_top_l, .box_top_r{height: 37px;line-height: 37px;}
+.box_border{border: 1px solid #d3dbde;}

@@ -302,6 +302,7 @@
 			<img src="holder.js/1226x430?text=图4&bg=EFEBD9" class="item">
 			<img src="holder.js/1226x430?text=图5&bg=B1B336" class="item">
 			<img src="holder.js/1226x430?text=图6&bg=EBBFA2" class="item">
+			
 		</div>
 		<div class="carousel-btn">
 			<a href="javascript:" class="btn active"></a>

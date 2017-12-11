@@ -49,6 +49,47 @@
 		                	<i class="glyphicon glyphicon-remove" id="cancel"></i>
 		                </a>
 	            	</div>
+	            	<form action="/address" method="post">
+		                  <div class="form-group">
+		                    <label for="exampleInputEmail1">姓名</label>
+		                    <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="" style="width: 610px;margin-left: 10px;">
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="exampleInputEmail1">收货地址</label>
+		                    <div class="clearfix"></div>
+		                    <div class='col-md-4'>
+		                        <select name="province" id="" class="form-control ">
+		                            <option value="">请选择</option>
+		                        </select>
+		                    </div>
+		                    <div class='col-md-4'>
+		                        <select name="city" id="" class="form-control ">
+		                            <option value="">请选择</option>
+		                        </select>
+		                    </div>
+		                    <div class='col-md-4'>
+		                        <select name="xian" id="" class="form-control ">
+		                            <option value="">请选择</option>
+		                        </select>
+		                    </div>
+		                  </div>
+		                  <div class="clearfix"></div>
+		                  <div class="form-group">
+		                    <label for="exampleInputEmail1">详细地址</label>
+		                    <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="" style="width: 610px;height:60px;margin-left: 10px;">
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="exampleInputEmail1">手机号</label>
+		                    <input type="text" name="phone" class="form-control" id="exampleInputEmail1" placeholder="" style="width: 610px;margin-left: 10px;">
+		                  </div>
+		                  <div class="checkbox" style="margin-left: 20px;">
+		                    <label>
+		                      <input type="checkbox" value="1" name="is_default"> 是否为默认收货地址
+		                    </label>
+		                  </div>
+		                    {{csrf_field()}}
+		                  <button type="submit" class="btn btn-default" style="margin-left: 20px;">添加</button>
+                	</form>
 	            </div>
 	        </div>
 	        <!-- <div class="address-item">

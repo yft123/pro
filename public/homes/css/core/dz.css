@@ -105,6 +105,7 @@ a{
 	position: absolute;
 	left:0px;
 	top:0px;
+	z-index: 9999;
 }
 
 .modal-header{
@@ -127,7 +128,6 @@ a{
 	height: 30px;
 	line-height: 30px;
 	text-align:center;
-	/*color: #757575;*/
 	cursor: pointer;
 	border-radius: 15px;
 	position: absolute;
@@ -146,5 +146,8 @@ a{
 	line-height: 30px;
 	vertical-align: middle;
 	font-weight: normal;
-	/*color: #757575;*/
+}
+
+.form-control{
+	width: 200px;
 }

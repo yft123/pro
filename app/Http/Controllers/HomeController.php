@@ -8,8 +8,9 @@ use DB;
 
 class HomeController extends Controller
 {
-     public function index()
+     public function index(request $request)
     {
+        // $a = DB::table('goods_pic')->where('goods_id',1)->get();
     	return view('home.index');
     }
 
@@ -40,12 +41,6 @@ class HomeController extends Controller
             return back()->with('msg','注册失败!!'); 
         }
 
-    }
-
-
-    public function lists()
-    {
-        return view('home.lists');
     }
 
     public function shopping()
