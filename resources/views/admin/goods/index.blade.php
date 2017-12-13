@@ -37,7 +37,6 @@
                  		<th> 头图</th>
                  		<th> 商品价格</th>
                     <th> 库存</th>
-                 		<th> 內容</th>
                  		<th> 操作</th>
               		</tr>
                   @if(count($goods) > 0)
@@ -46,9 +45,8 @@
                  		<td class="col-md-2">{{$v->id}}</td>                 		
                     <td class="col-md-3">{{$v->title}}</td>
                  		<td class="col-md-3">{!!$v->fig!!}</td>
-                 		<td class="col-md-3">{{$v->price}}</td>
+                 		<td class="col-md-2">{{$v->price}}</td>
                     <td class="col-md-1">{{$v->kucun}}</td>
-                 		<td class="col-md-1">{{$v->content}}</td>
                  		<td>
                   		<div class="btn-group">
                       		<a class="btn btn-primary" href="/goods/{{$v->id}}/edit"><i class="icon_plus_alt2"></i></a>
@@ -85,7 +83,7 @@
 @section('js')
 <script>
 $('.del').submit(function(){
-    if(!confirm('您确定要删除该用户吗?')) return false;
+    if(!confirm('您确定要删除该商品吗?')) return false;
     
 });
 </script>

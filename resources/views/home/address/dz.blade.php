@@ -58,17 +58,17 @@
 		                    <label for="exampleInputEmail1">收货地址</label>
 		                    <div class="clearfix"></div>
 		                    <div class='col-md-4'>
-		                        <select name="province" id="" class="form-control ">
+		                        <select name="province" id="" class="form-control " name="province">
 		                            <option value="">请选择</option>
 		                        </select>
 		                    </div>
 		                    <div class='col-md-4'>
-		                        <select name="city" id="" class="form-control ">
+		                        <select name="city" id="" class="form-control " name="city">
 		                            <option value="">请选择</option>
 		                        </select>
 		                    </div>
 		                    <div class='col-md-4'>
-		                        <select name="xian" id="" class="form-control ">
+		                        <select name="xian" id="" class="form-control " name="xian">
 		                            <option value="">请选择</option>
 		                        </select>
 		                    </div>
@@ -112,3 +112,64 @@
 	    </div>
 	</div>
 @stop
+
+<script>
+function init() {
+    //
+    $.ajax({
+        type:'get',
+        url: '/getarea',
+        dataType:'json',
+        data: {pid:0},
+        success: function(data){
+            for(var i=0;i<data.length;i++){
+                var option = $('<option value="'+data[i].id+'">'+data[i].area_name+'</option>')
+                //将option插入到省的select中
+                $('select[name=province]').append(option);
+            }
+        }
+    })
+}
+init();
+
+$('select[name=province]').change(function(){
+    $('select[name=city]').html('<option value="">请选择</option>')
+    //获取当前省的id
+    var id = $(this).val();
+    //发送ajax获取当前省所对应的市的信息
+    $.ajax({
+        type:'get',
+        url: '/getv',
+        dataType:'json',
+        data: {pid:id},
+        success: function(data){
+            for(var i=0;i<data.length;i++){
+                var option = $('<option value="'+data[i].id+'">'+data[i].area_name+'</option>')
+                //将option插入到省的select中
+                $('select[name=city]').append(option);
+            }
+        }
+    })
+});
+
+$('select[name=city]').change(function(){
+    $('select[name=xian]').html('<option value="">请选择</option>')
+    //获取当前省的id
+    var id = $(this).val();
+    //发送ajax获取当前省所对应的市的信息
+    $.ajax({
+        type:'get',
+        url: '/getarea',
+        dataType:'json',
+        data: {pid:id},
+        success: function(data){
+            for(var i=0;i<data.length;i++){
+                var option = $('<option value="'+data[i].id+'">'+data[i].area_name+'</option>')
+                //将option插入到省的select中
+                $('select[name=xian]').append(option);
+            }
+        }
+    })
+});
+
+</script>

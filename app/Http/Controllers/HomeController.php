@@ -10,13 +10,9 @@ class HomeController extends Controller
 {
      public function index(request $request)
     {
-        // $a = DB::table('goods_pic')->where('goods_id',1)->get();
-    	return view('home.index');
-    }
-
-    public function login()
-    {
-    	return view('home.login');
+        $jd = DB::table('banner')->where('path',1)->get();
+        $a = DB::table('banner')->where('path',2)->get();
+    	return view('home.index',compact('jd','a'));
     }
 
     public function registered()
@@ -43,23 +39,8 @@ class HomeController extends Controller
 
     }
 
-    public function shopping()
-    {
-        return view('home.shopping');
-    }
-
     public function order()
     {
         return view('home.order');
-    }
-
-    public function details()
-    {
-        return view('home.details');
-    }
-
-    public function dz()
-    {
-        return view('home.core.dz');
     }
 }

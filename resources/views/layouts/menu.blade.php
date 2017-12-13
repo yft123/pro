@@ -81,6 +81,18 @@
             <li class="sub-menu">
                 <a href="javascript:;" class="">
                     <i class="icon_genius"></i>
+                    <span>banner管理</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="/banner/create">图片添加</a></li>                          
+                    <li><a class="" href="/banner">图片列表</a></li>
+                </ul>
+            </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_genius"></i>
                     <span>明星手机管理</span>
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>

@@ -31,7 +31,7 @@
 					<a href="#">Select Refion</a>
 			</div>
 			<div class="topbar-cart">
-				<a href="#"><i></i>购物车</a>
+				<a href="/cart"><i></i>购物车</a>
 			</div>
 			<div class="topbar-info">
 				<a href="/home/login" class="link">登录</a>

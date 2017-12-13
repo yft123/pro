@@ -1,4 +1,4 @@
-@extends('home.login')
+@extends('home.login.index')
 
 @section('content')
 <link rel="stylesheet" type="text/css" href="/homes/css/registered.css">
@@ -13,27 +13,27 @@
 <script type="text/javascript">
 
 	$(function(){
-		$('#username').blur(function(){
-			var user = $('input[name=username]').val();
-			// alert(typeof(user));
-			if (user=='') {
-				$('#user').html('用户名不能为空').css('color','red');
-			}else if(user.length<6){
-				$('#user').html('用户名不能小于6位').css('color','red');
-			}else{
-				$('#user').html('√').css('color','green');
-			}
-		})
-		$('#password').blur(function(){
-			var pwd = $('input[name=password]').val();
-			if (pwd='') {
-				$('#user').html('密码不能为空').css('color','red');
-			}else if(pwd.length<6){
-				$('#user').html('用户名不能为空').css('color','red');
-			}else{
-				$('#user').html('√').css('color','green');
-			}
-		})
+		// $('#username').blur(function(){
+		// 	var user = $('input[name=username]').val();
+		// 	// alert(typeof(user));
+		// 	if (user=='') {
+		// 		$('#user').html('用户名不能为空').css('color','red');
+		// 	}else if(user.length<6){
+		// 		$('#user').html('用户名不能小于6位').css('color','red');
+		// 	}else{
+		// 		$('#user').html('√').css('color','green');
+		// 	}
+		// })
+		// $('#password').blur(function(){
+		// 	var pwd = $('input[name=password]').val();
+		// 	if (pwd='') {
+		// 		$('#user').html('密码不能为空').css('color','red');
+		// 	}else if(pwd.length<6){
+		// 		$('#user').html('用户名不能为空').css('color','red');
+		// 	}else{
+		// 		$('#user').html('√').css('color','green');
+		// 	}
+		// })
 		$('#btn').click(function () {
 			var phone = $('input[name=phone]').val();
 			var zz = /1\d{10}/;

@@ -6,6 +6,7 @@
 	<title>欢迎登录</title>
 	@show
 	<link rel="stylesheet" type="text/css" href="/homes/css/login.css">
+	
 </head>
 <body>
 	<div class="h_panel ">
@@ -43,11 +44,12 @@
 						<label>
 							<img src="/Homes/img/login/mm.png" title="密码">
 						</label>
-						<input name="pwd" type="password" class="logo_text" maxlength="32" placeholder="密码" id="pwd"> 
+						<input name="password" type="password" class="logo_text" maxlength="32" placeholder="密码" id="pwd"> 
 						<div style="height: 10px;" id="t_pwd"></div>
 					</div>
+					{{csrf_field()}}
 					<div class="submit">
-						<button type="submit" name="button" class="sub" id="sub">登录</button>
+						<button type="submit" class="sub" id="sub">登录</button>
 					</div>
 				</form>
 				<div class="other_panel">
@@ -56,7 +58,7 @@
                   	</span>
                   	<div class="reverse">
                     	<div class="n_links_area" ">
-	                      	<a class="outer-link" href="#">注册</a>
+	                      	<a class="outer-link" href="/home/registered">注册</a>
 	                      	<span>|</span>
 	                      	<a class="outer-link" href="#">忘记密码？</a>
                     	</div>

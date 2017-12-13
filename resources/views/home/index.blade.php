@@ -296,17 +296,12 @@
 @section('content')
 	<div class="carousel container">
 		<div class="carousel-inner">
-			<img src="holder.js/100px100p?text=图1&bg=01508A" class="item first">
-			<img src="holder.js/1226x430?text=图2&bg=D6B572" class="item">
-			<img src="holder.js/1226x430?text=图3&bg=F46D78" class="item">
-			<img src="holder.js/1226x430?text=图4&bg=EFEBD9" class="item">
-			<img src="holder.js/1226x430?text=图5&bg=B1B336" class="item">
-			<img src="holder.js/1226x430?text=图6&bg=EBBFA2" class="item">
-			
+			@foreach ($jd as $k => $v)
+				<img src="{{$v->img}}" class="first item " width="100%" height="100%">
+			@endforeach
 		</div>
 		<div class="carousel-btn">
 			<a href="javascript:" class="btn active"></a>
-			<a href="javascript:" class="btn"></a>
 			<a href="javascript:" class="btn"></a>
 			<a href="javascript:" class="btn"></a>
 			<a href="javascript:" class="btn"></a>
@@ -330,9 +325,9 @@
 			</div>
 			<div class="hot-promo">
 				<ul class="promo-list clearfix">
-					<li class="promo-item"><a href="#"><img src="holder.js/316x170?bg=FFAC30" alt=""></a></li>
-					<li class="promo-item"><a href="#"><img src="holder.js/316x170?bg=F95754" alt=""></a></li>
-					<li class="promo-item"><a href="#"><img src="holder.js/316x170?bg=4287E4" alt=""></a></li>
+					@foreach ($a as $k => $v)
+						<li class="promo-item"><a href="#"><img src="{{$v->img}}" alt=""></a></li>
+					@endforeach
 				</ul>
 			</div>
 		</div>

@@ -56,7 +56,7 @@ class GoodsController extends Controller
     public function store(Request $request)
     {
 
-        $data = $request->only(['title','price','kucun','content','fig']);
+        $data = $request->only(['title','price','kucun','color','banben','content']);
         $data['addtime'] = date('Y-m-d H:i:s');
         $data['status'] = 1; 
         if($request->hasFile('fig')) {
@@ -74,9 +74,7 @@ class GoodsController extends Controller
 
         }
 
-        $insert = DB::table('goods')->insertGetId($data);
-        
-
+        $insert = DB::table('goods')->insertGetId($data);       
         if ($insert >0) {
             if ($request->hasfile('pic')){
                 //遍历上传数组
@@ -113,11 +111,14 @@ class GoodsController extends Controller
     public function show($id)
     {
          $goods = DB::table('goods')->where('id',$id)->first();
+         $g = DB::table('goods')
+                ->where('title',$goods->title)
+                ->select('color','banben','price','fig')
+                ->paginate();
         //读取商品的图片信息
         $goods_pic = DB::table('goods_pic')->where('goods_id', $id)->get();
 
-        return view('home.goods.show', compact('goods','goods_pic'));
-        
+        return view('home.goods.show', compact('goods','goods_pic','g'));
     }
 
     /**
@@ -129,6 +130,9 @@ class GoodsController extends Controller
     public function edit($id)
     {
         //
+         $goods = DB::table('goods')->where('id',$id)->first();
+
+        return view('admin.goods.edit', ['goods'=>$goods]);
     }
 
     /**
@@ -140,7 +144,55 @@ class GoodsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->only(['title','price','kucun','content','fig']);
+        $data['addtime'] = date('Y-m-d H:i:s');
+        $data['status'] = 1; 
+        if($request->hasFile('fig')) {
+            //获取文件的后缀名
+            $suffix = $request->file('fig')->extension();
+            //创建一个新的随机名称
+            $name = uniqid('img_').'.'.$suffix;
+
+            //文件夹路径
+            $dir = './uploads/'.date('Y-m-d');
+            //移动文件
+            $request->file('fig')->move($dir, $name);
+            //获取文件的路径
+            $data['fig'] = trim($dir.'/'.$name,'.');
+
+        }
+
+        $insert = DB::table('goods')->where('id', $id)->update($data);
+        
+
+        if ($insert >0) {
+            if ($request->hasfile('pic')){
+                //删除原来的图片
+                DB::table('goods_pic')->where('goods_id',$id)->delete();
+                //遍历上传数组
+                // unlink()
+                $img = [];
+                foreach ($request->file('pic') as $k => $v) {
+                    $tmp= [];
+                    //获取文件的后缀名
+                    $suffix = $v->extension();
+                    //创建一个新的随机名称
+                    $name = uniqid('img_').'.'.$suffix;
+                    //文件夹路径
+                    $dir = './uploads/'.date('Y-m-d');
+                    //移动文件
+                    $v->move($dir, $name);
+                    //获取文件的路径
+                    $tmp['goods_id']=$insert;
+                    $tmp['pic']=trim($dir.'/'.$name,'.');
+                    $img[] = $tmp;
+                }
+                DB::table('goods_pic')->insert($img);
+            }
+            return redirect('/goods')->with('msg','添加成功');
+        }else{
+            return redirect('/goods')->with('msg','添加失败');
+        }
     }
 
     /**
@@ -152,6 +204,11 @@ class GoodsController extends Controller
     public function destroy($id)
     {
         //
+        if(DB::table('goods')->where('id', $id)->delete()) {
+            return back()->with('msg','删除成功');
+        }else{
+            return back()->with('msg','删除失败!!');
+        }
     }
 
     public function lists()

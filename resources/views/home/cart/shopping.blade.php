@@ -9,7 +9,7 @@
 	<script type="text/javascript">
 		window.onload=function(){
 		      var a=document.getElementById('box');
-		      var box=document.getElementsByName("checkbox");
+		      var box=document.getElementsByName("checkbox[]");
 		      var len=box.length;
 		      var flag=true;
 		      a.onclick=function(){
@@ -26,9 +26,12 @@
 		      		}
 		    	}
     	}
+
+    	
 	</script>
 </head>
 <body>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 	<div class="site-header">
 	    <div class="container">
 	        <div class="header-logo">
@@ -66,52 +69,64 @@
 	        </div>
 	    </div>
 	</div>
-	<div class="gwcxqbj">
-		<div class="gwcxd center">
-			<div class="top2 center">
-				<div class="sub_top fl">
-					<input type="checkbox" class="quanxuan" id="box" name="checkbox">全选
+	<form action="/order" method="post">
+		<div class="gwcxqbj">
+			<div class="gwcxd center">
+				<div class="top2 center">
+					<div class="sub_top fl">
+						<input type="checkbox" class="quanxuan" id="box" name="checkbox[]">全选
+					</div>
+					<div class="sub_top fl">商品名称</div>
+					<div class="sub_top fl">单价</div>
+					<div class="sub_top fl">数量</div>
+					<div class="sub_top fl">小计</div>
+					<div class="sub_top fr">操作</div>
+					<div class="clear"></div>
 				</div>
-				<div class="sub_top fl">商品名称</div>
-				<div class="sub_top fl">单价</div>
-				<div class="sub_top fl">数量</div>
-				<div class="sub_top fl">小计</div>
-				<div class="sub_top fr">操作</div>
-				<div class="clear"></div>
+				@foreach ($goods as $k => $v)
+				<div class="content2 center">
+					<div class="sub_content fl ">
+						<input type="checkbox" class="quanxuan goodsCheck" name="checkbox[]" value="{{$v->id}}">
+					</div>
+					<div class="sub_content fl"><img src="{{$v->detail->fig}}" width="35" height="35"></div>
+					<div class="sub_content fl ft20">{{$v->detail->title}}</div>
+					<div class="sub_content fl">{{$v->detail->price}}</div>
+					<div class="shop-arithmetic fl">
+						<a href="javascript:;" class="minus" style="text-decoration: none;">-</a>
+						<span class="num">1</span>
+						<a href="javascript:;" class="plus" style="text-decoration: none;">+</a>
+					</div>
+					<div class="sub_content fl totle">{{$v->detail->price}}</div>
+					<div class="sub_content fl">
+						<a href="" class="del" cid="{{$v->id}}">
+							<i class="glyphicon glyphicon-remove"></i>
+						</a>
+					</div>
+					<div class="clear"></div>
+				</div>
+				@endforeach
 			</div>
-			<div class="content2 center">
-				<div class="sub_content fl ">
-					<input type="checkbox" class="quanxuan goodsCheck" name="checkbox">
+			<div class="jiesuandan mt20 center">
+				<div class="tishi fl ml20">
+					<ul>
+						<li><a href="/home/lists">继续购物</a></li>
+					</ul>
 				</div>
-				<div class="sub_content fl"><img src="/homes/img/5c_80.png"></div>
-				<div class="sub_content fl ft20">小米6全网通6GB内存+64GB 亮黑色</div>
-				<div class="sub_content fl ">2499元</div>
-				<div class="shop-arithmetic fl">
-					<a href="javascript:;" class="minus">-</a>
-					<span class="num">1</span>
-					<a href="javascript:;" class="plus">+</a>
+				<div class="jiesuan fr">
+					<div class="jiesuanjiage fl">合计（不含运费）：<span id="susum">2499.00元</span></div>
+					<div class="jsanniu fr"><input class="jsan" type="submit" name="checkbox" value="去结算"></div>
+					<div class="clear"></div>
 				</div>
-				<div class="sub_content fl">2499元</div>
-				<div class="sub_content fl"><a href="">×</a></div>
 				<div class="clear"></div>
 			</div>
 		</div>
-		<div class="jiesuandan mt20 center">
-			<div class="tishi fl ml20">
-				<ul>
-					<li><a href="/home/lists">继续购物</a></li>
-					<!-- <li>|</li>
-					<li>共<span>2</span>件商品，已选择<span>1</span>件</li>
-					<div class="clear"></div> -->
-				</ul>
-			</div>
-			<div class="jiesuan fr">
-				<div class="jiesuanjiage fl">合计（不含运费）：<span>2499.00元</span></div>
-				<div class="jsanniu fr"><input class="jsan" type="submit" name="checkbox" value="去结算"></div>
-				<div class="clear"></div>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
-	
+	</form>
 @include('layouts.homes.footer')
+<style type="text/css">
+	.servise-item{
+		width: 235px;
+	}
+	.footer-info .info-item{
+		width: 150px;
+	}	
+</style>

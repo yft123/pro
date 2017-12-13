@@ -27,7 +27,32 @@
                   <label for="exampleInputPassword1">库存</label>
                     <input type="text" class="form-control" name="kucun">
               </div>
-              <div class="form-group">
+              <div class="form-group pull-left">
+                  <label for="exampleInputPassword1">颜色</label>
+                  <select class="form-control" style="width: 150px;" name="color">
+                    <option>黑色</option>
+                    <option>白色</option>
+                    <option>蓝色</option>
+                    <option>红色</option>
+                    <option>银色</option>
+                    <option>透明</option>
+                  </select>
+              </div>
+              <div class="form-group pull-left col-md-offset-1">
+                  <label for="exampleInputPassword1">版本</label>
+                  <select class="form-control" style="width: 150px;" name="banben">
+                    <option>4g+16G</option>
+                    <option>4g+32G</option>
+                    <option>4g+64G</option>
+                    <option>6g+64G</option>
+                    <option>33寸</option>
+                    <option>43寸</option>
+                    <option>49寸</option>
+                    <option>55寸</option>
+                    <option>65寸</option>
+                  </select>
+              </div>
+              <div class="form-group" style="clear: both;">
                   <label for="exampleInputPassword1">商品介绍</label>
                   <script id="editor" type="text/plain" name="content" style="width:700px;height:140px;"></script>
               </div>

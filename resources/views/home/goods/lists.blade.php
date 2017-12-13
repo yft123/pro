@@ -12,8 +12,8 @@
 		<div class="c-nav">
 		    <div class="container">
 		        <a href="/home">首页</a>
-		        <span class="sep">&gt;</span>
-		        <a href="#">智能摄像机频道</a>    
+		        <!-- <span class="sep">&gt;</span> -->
+		        <!-- <a href="#">智能摄像机频道</a>     -->
 		    </div>
 		</div>
 		<div class="c-con">
