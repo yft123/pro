@@ -12,7 +12,14 @@ class HomeController extends Controller
     {
         $jd = DB::table('banner')->where('path',1)->get();
         $a = DB::table('banner')->where('path',2)->get();
-    	return view('home.index',compact('jd','a'));
+        //遍历一级分类
+        $cat = DB::table('cates')->where('pid','0')->get();
+        $goods = DB::table('goods')->get();
+        // dd($goods);
+        foreach ($cat as $k => $v) {
+            $v->goods = DB::table('goods')->where('fl_id', $v->id)->get();
+        }
+    	return view('home.index',compact('jd','a','cat'));
     }
 
     public function registered()

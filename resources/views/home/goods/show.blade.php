@@ -23,20 +23,17 @@
                     <div class="goods-small-pic">
                         <ul id="goodsPicList">
                             <li class="current">
-                                <img src="{{$g[0]->fig}}" alt="" />
+                                <img src="{{$goods->fig}}" alt="" />
                             </li>
-                            <li>
-                                <img src="{{$g[1]->fig}}" alt="" />
-                            </li>
+                           
                         </ul>
                     </div>
                     <div class="goods-big-pic" style="display:block">
-                        <img class="img1" src="{{$g[0]->fig}}" alt="" />
+                        <img class="img1" src="{{$goods->fig}}" alt="" />
                     </div>
-                    <div class="goods-big-pic">
-                        <img class="img2" src="{{$g[1]->fig}}" alt="" />
-                    </div>
+                    
                 </div>
+                
                 <form  action="/cart" method="post" style="overflow: hidden;">
                     <div class="cons-right">
                         <dl class="goods-info-box">
@@ -47,10 +44,7 @@
                                         <p> {!!$goods->content!!}</p>
                                     </dd>
                                     <dd class="goods-subtitle goods" style="display: block;">
-                                        <span class="pro-price J_proPrice"> {{$g[0]->price}}元</span>
-                                    </dd>
-                                    <dd class="goods-subtitle goods" style="display: none;">
-                                        <span class="pro-price J_proPrice"> {{$g[1]->price}}元</span>
+                                        <span class="pro-price J_proPrice"> {{$goods->price}}元</span>
                                     </dd>
                                 </dl>
                             </dt>
@@ -63,53 +57,30 @@
                                 <!--产品版本开始-->
                                 <div class="list-wrap">
                                     <div class="pro">
-                                        <div class="pro-title">选择版本</div>
-                                        <ul class="ul-list">
-                                            <li class="li-list active">
-                                                <a>
-                                                    <span class="name">{{$g[0]->banben}}</span>
-                                                    <span class="price">{{$g[0]->price}}元</span>
-                                                </a>
-                                            </li>
-                                        
-                                        </ul>   
-                                    </div>
-                                    <div class="pro">
                                         <div class="pro-title">选择颜色</div>
                                         <ul class="ul-list">
                                             <li class="li-list active">
                                                 <a>
-                                                    <img class="done" src="{{$g[0]->fig}}" alt="">{{$g[0]->color}}
+                                                    <img class="done" src="{{$goods->fig}}" alt="">{{$goods->color}}
                                                 </a>
                                             </li>
-                                            <li class="li-list">
-                                                <a>
-                                                    <img class="done" src="{{$g[1]->fig}}" alt="">{{$g[1]->color}}
-                                                </a>
-                                            </li>
+                                           
                                         </ul>   
                                     </div>
+                                    
                                 </div>
                                 <!--产品版本结束-->
                                 <!--已选择的产品开始-->
                                 <div class="pro-list" style="display: block;">
                                     <ul>
                                         <li>
-                                            {{$goods->title}} {{$g[0]->color}}
-                                            <span>{{$g[0]->price}}</span>
+                                            {{$goods->title}} {{$goods->color}}
+                                            <span>{{$goods->price}}</span>
                                         </li>
-                                        <li class="totlePrice">总计  ：{{$g[0]->price}}元</li>
+                                        <li class="totlePrice">总计  ：{{$goods->price}}元</li>
                                     </ul>
                                 </div>
-                                <div class="pro-list" style="display: none;">
-                                    <ul>
-                                        <li>
-                                            {{$goods->title}} {{$g[1]->color}}
-                                            <span>{{$g[1]->price}}</span>
-                                        </li>
-                                        <li class="totlePrice">总计  ：{{$g[1]->price}}元</li>
-                                    </ul>
-                                </div>
+                                
                                 <!--已选择的产品结束-->
                                 <input type="hidden" name="goods_id" value="{{$goods->id}}">
                                 <!--购买按钮开始-->
@@ -124,6 +95,7 @@
                         </dl>
                     </div>
                 </form>
+                
             </div>
                     
         </div>
@@ -144,7 +116,7 @@
                 <div class="notice_bd">
                     <h6 style="display: block;" class="">
                         @foreach ($goods_pic as $k => $v)
-                            <img src="{!!$v->pic!!}" alt="" width="100%" height="780">
+                            <img src="{{$v->pic}}" alt="" width="100%" height="780">
                         @endforeach
                     </h6>
                     <h6 class="">

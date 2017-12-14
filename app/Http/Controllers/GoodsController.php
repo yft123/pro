@@ -44,7 +44,9 @@ class GoodsController extends Controller
      */
     public function create()
     {
-        return view('admin.goods.create');
+        $cates = DB::table('cates')->get(); 
+        //分配变量 解析模板
+        return view('admin.goods.create', ['cates'=>$cates]);
     }
 
     /**
@@ -55,8 +57,7 @@ class GoodsController extends Controller
      */
     public function store(Request $request)
     {
-
-        $data = $request->only(['title','price','kucun','color','banben','content']);
+        $data = $request->only(['title','price','kucun','color','content','fl_id']);
         $data['addtime'] = date('Y-m-d H:i:s');
         $data['status'] = 1; 
         if($request->hasFile('fig')) {
@@ -111,14 +112,14 @@ class GoodsController extends Controller
     public function show($id)
     {
          $goods = DB::table('goods')->where('id',$id)->first();
-         $g = DB::table('goods')
-                ->where('title',$goods->title)
-                ->select('color','banben','price','fig')
-                ->paginate();
+         // $g = DB::table('goods')
+         //        ->where('title',$goods->title)
+         //        ->select('color','banben','price','fig')
+         //        ->paginate();
         //读取商品的图片信息
         $goods_pic = DB::table('goods_pic')->where('goods_id', $id)->get();
 
-        return view('home.goods.show', compact('goods','goods_pic','g'));
+        return view('home.goods.show', compact('goods','goods_pic'));
     }
 
     /**
@@ -131,6 +132,7 @@ class GoodsController extends Controller
     {
         //
          $goods = DB::table('goods')->where('id',$id)->first();
+         // dd($goods);
 
         return view('admin.goods.edit', ['goods'=>$goods]);
     }
@@ -144,7 +146,7 @@ class GoodsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->only(['title','price','kucun','content','fig']);
+        $data = $request->only(['title','price','kucun','content','fig','color']);
         $data['addtime'] = date('Y-m-d H:i:s');
         $data['status'] = 1; 
         if($request->hasFile('fig')) {
@@ -183,7 +185,7 @@ class GoodsController extends Controller
                     //移动文件
                     $v->move($dir, $name);
                     //获取文件的路径
-                    $tmp['goods_id']=$insert;
+                    $tmp['goods_id']=$id;
                     $tmp['pic']=trim($dir.'/'.$name,'.');
                     $img[] = $tmp;
                 }

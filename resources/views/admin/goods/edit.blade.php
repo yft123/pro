@@ -28,6 +28,19 @@
                       <input type="text" class="form-control" name="kucun" value="{{$goods->kucun}}">
                 </div>
                 <div class="form-group">
+                    <label for="exampleInputPassword1">颜色</label>
+                      <!-- <input type="text" class="form-control" name="color" value="{{$goods->color}}"> -->
+                      <select class="form-control" style="width: 150px;" name="color">
+                          <option value="">{{$goods->color}}</option>
+                          <option>黑色</option>
+                          <option>白色</option>
+                          <option>蓝色</option>
+                          <option>红色</option>
+                          <option>银色</option>
+                          <option>透明</option>
+                      </select>
+                </div>
+                <div class="form-group">
                     <label for="exampleInputPassword1">商品介绍</label>
                     <script id="editor" type="text/plain" name="content" style="width:700px;height:140px;">{!!$goods->content!!}</script>
                 </div>

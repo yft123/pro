@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use DB;
+use Illuminate\Http\Request;
 
 class CateController extends Controller
 {
@@ -12,25 +12,21 @@ class CateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
+        //读取分类的信息
+        $cates = DB::select("select id,name,pid,concat(path,'_',id) as paths from cates order by paths");
 
-        $cates = DB::select("select id,name,parentid,img,concat(path,'_',id) as paths from cates  order by paths");
-        //dd($cates);
-        foreach ($cates as $key => $value) {
-            //dd(explode('_',$value->paths));
-            $count = count(explode('_',$value->paths))-2;
-            //dd($count);
+        //修改分类的名称  
+        foreach ($cates as $key => &$value) {
+            //根据path来进行数据分隔 判断层级数   1-1-1-1
+            $count = count(explode('_', $value->paths))-2;
 
-            $value->name = str_repeat('|----',$count).$value->name;
+            $value->name = str_repeat('|-----', $count).$value->name;
         }
 
-       
         //解析模板
-
-        return view('admin.cate.index',[
-            'cates'=>$cates
-            ]);
+        return view('admin.cate.index', ['cates'=>$cates]);
     }
 
     /**
@@ -40,8 +36,10 @@ class CateController extends Controller
      */
     public function create()
     {
+        //读取分类信息
         $cates = DB::table('cates')->get();
-        return view('admin.cate.create',['cates'=>$cates]);
+        //分配变量 解析模板
+        return view('admin.cate.create', ['cates'=>$cates]);
     }
 
     /**
@@ -52,40 +50,22 @@ class CateController extends Controller
      */
     public function store(Request $request)
     {
+        //获取参数
         $data = $request->except(['_token']);
-
-        
-        if($data['parentid'] == 0) {
+        //判断是否为顶级分类
+        if($data['pid'] == 0) {
             $data['path'] = '0';
         }else{
-            $p = DB::table('cates')->where('id',$data['parentid'])->first();
+            //读取父级分类的信息
+            $p = DB::table('cates')->where('id',$data['pid'])->first();
             $data['path'] = $p->path.'_'.$p->id;
-             //dd($data['path']);
         }
-
-        //文件上传
-        if($request->hasFile('img')) {
-            //获取文件的后缀名
-            $suffix = $request->file('img')->extension();
-            //创建一个新的随机名称
-            $name = uniqid('img_').'.'.$suffix;
-            //文件夹路径
-            $dir = './uploads/'.date('Y-m-d');
-            //移动文件
-            $request->file('img')->move($dir, $name);
-            //获取文件的路径
-            $data['img'] = trim($dir.'/'.$name,'.');
-        
-        }
-
-
         //将数据插入到数据库中
         if(DB::table('cates')->insert($data)) {
             return redirect('/cate')->with('msg','添加成功');
         }else{
-            return back()->with('msg','添加失败!!');
-        }
-
+            return back()->with('msg','添加失败');
+        }   
     }
 
     /**
@@ -130,14 +110,17 @@ class CateController extends Controller
      */
     public function destroy($id)
     {
+        //获取当前的分类信息
         $cate = DB::table('cates')->where('id',$id)->first();
-        $path = $cate->path .'_'.$cate->id;
+        // 拼接path
+        $path = $cate->path .'_'.$cate->id;// 0_1_3
+        //删除子分类
         $res = DB::table('cates')->where('path','like',$path.'%')->delete();
-
+        //删除自己
         if(DB::table('cates')->where('id',$id)->delete()) {
             return back()->with('msg','删除成功');
         }else{
-            return back()->with('msg','删除失败');
-        };
+            return back()->with('msg','删除失败!!!');
+        }
     }
 }

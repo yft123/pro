@@ -175,7 +175,7 @@ input:focus {
 .side-nav {
 	position: absolute;
 	top: 85px;
-	left: -55px;
+	left: -49px;
 	width: 233px;
 	z-index: 3;
 }
@@ -210,8 +210,8 @@ input:focus {
 	position: absolute;
 	left: 230px;
 	top: 0;
-	width: 780px;
-	height: 428px;
+	min-width: 780px;
+	min-height: 428px;
 	border: 1px solid #e0e0e0;
 	background: #fff;
 	box-shadow: 0 8px 16px rgba(0,0,0,0.18);
@@ -227,7 +227,7 @@ input:focus {
 .children-list .link {
 	display: block;
 	line-height: 40px;
-	width: 160px;
+	width: 200px;
 	padding: 15px 0 15px 20px;
 }
 .children-list .title {

@@ -13,6 +13,7 @@
 		$btn.eq(num).addClass("active");
 		$btn.not($btn.eq(num)).removeClass("active");
 	}
+	$num=$item.length-1;
 	// 小按钮设置
 	$btn.on("click",function(){
 		i = $(this).index();
@@ -20,18 +21,18 @@
 	})
 	// 上一个
 	$prev.on("click",function(){
-		i <= -4 ? i = 0 : i = i - 1;
+		i <= -$num ? i = 0 : i = i - 1;
 		slide(i);
 	})
 	// 下一个
 	$next.on("click",function(){
-		i >= 4 ? i = 0 : i++;
+		i >= $num ? i = 0 : i++;
 		slide(i);
 	})
 	// 幻灯片自动播放
 	function car(){
 		cartime = setInterval(function(){
-			i >= 4 ? i = 0 : i++;
+			i >= $num ? i = 0 : i++;
 			slide(i);
 		},5000);
 	}
