@@ -88,15 +88,15 @@
 					<div class="sub_content fl ">
 						<input type="checkbox" class="quanxuan goodsCheck" name="checkbox[]" value="{{$v->id}}">
 					</div>
-					<div class="sub_content fl"><img src="{{$v->detail->fig}}" width="35" height="35"></div>
-					<div class="sub_content fl ft20">{{$v->detail->title}}</div>
-					<div class="sub_content fl">{{$v->detail->price}}</div>
+					<div class="sub_content fl"><img src="{{$v->d->fig}}" width="35" height="35"></div>
+					<div class="sub_content fl ft20">{{$v->d->title}}</div>
+					<div class="sub_content fl">{{$v->d->price}}</div>
 					<div class="shop-arithmetic fl">
 						<a href="javascript:;" class="minus" style="text-decoration: none;">-</a>
 						<span class="num">1</span>
 						<a href="javascript:;" class="plus" style="text-decoration: none;">+</a>
 					</div>
-					<div class="sub_content fl totle">{{$v->detail->price}}</div>
+					<div class="sub_content fl totle">{{$v->d->price}}</div>
 					<div class="sub_content fl">
 						<a href="" class="del" cid="{{$v->id}}">
 							<i class="glyphicon glyphicon-remove"></i>

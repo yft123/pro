@@ -75,7 +75,7 @@
                                     <ul>
                                         <li>
                                             {{$goods->title}} {{$goods->color}}
-                                            <span>{{$goods->price}}</span>
+                                            <span style="margin-left: 120px;">{{$goods->price}}</span>
                                         </li>
                                         <li class="totlePrice">总计  ：{{$goods->price}}元</li>
                                     </ul>

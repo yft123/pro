@@ -15,11 +15,12 @@ class HomeController extends Controller
         //遍历一级分类
         $cat = DB::table('cates')->where('pid','0')->get();
         $goods = DB::table('goods')->get();
-        // dd($goods);
         foreach ($cat as $k => $v) {
             $v->goods = DB::table('goods')->where('fl_id', $v->id)->get();
         }
-    	return view('home.index',compact('jd','a','cat'));
+        $stars=DB::table('goods')->where('path','小米明星单品')->get();
+
+    	return view('home.index',compact('jd','a','cat','stars'));
     }
 
     public function registered()

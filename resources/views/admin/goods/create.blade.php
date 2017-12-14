@@ -19,6 +19,10 @@
                     <label for="exampleInputEmail1">商品名称</label>
                     <input type="text" class="form-control" name="title">
               	</div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">内容简介</label>
+                    <input type="text" class="form-control" name="con">
+                </div>
 	            <div class="form-group">
 	                <label for="exampleInputPassword1">价格</label>
                   	<input type="text" class="form-control" name="price">
@@ -26,6 +30,16 @@
               <div class="form-group">
                   <label for="exampleInputPassword1">库存</label>
                     <input type="text" class="form-control" name="kucun">
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputPassword1">位置</label>
+                  <!-- <input type="text" class="form-control" name="path"> -->
+                  <select class="form-control" name="path" id="abc">
+                        <option value=""></option>
+                        <option>小米明星单品</option>
+                        <option>家电</option>
+                        <option>智能</option>
+                    </select>
               </div>
               <div class="form-group">
                     <label for="exampleInputPassword1">商品分类</label>
@@ -45,6 +59,7 @@
                     <option>黑色</option>
                     <option>白色</option>
                     <option>蓝色</option>
+                    <option>金色</option>
                     <option>红色</option>
                     <option>银色</option>
                     <option>透明</option>

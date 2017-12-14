@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class AddressController extends Controller
 {
@@ -13,7 +14,7 @@ class AddressController extends Controller
      */
     public function index()
     {
-        //
+        return view('home.address.dz');
     }
 
     /**
@@ -23,7 +24,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        return view('home.address.dz');
+        // return view('home.address.dz');
     }
 
     /**
@@ -85,7 +86,6 @@ class AddressController extends Controller
     public function getv(Request $request)
     {
         $pid = $request->pid;
-        //
         $areas = DB::table('areas')->where('area_parent_id',$pid)->get();
 
         return $areas->toJson();

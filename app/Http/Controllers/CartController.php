@@ -24,13 +24,12 @@ class CartController extends Controller
     {
         $id = session('id');
         $goods = DB::table('carts')->where('user_id',$id)->get();
-        // dd($goods);
+        
         foreach ($goods as $k => &$v) {
-            $v->detail = DB::table('goods')->where('id',$v->goods_id)->first();
+            $v->d = DB::table('goods')->where('id',$v->goods_id)->first();
 
             $v->pic = DB::table('goods_pic')->where('goods_id',$v->goods_id)->first();
         }
-        // dd($goods);
         return view('home.cart.shopping',compact('goods'));
     }
 

@@ -79,99 +79,19 @@
 			</div>
 			<div class="sgoods-content">
 				<ul class="sgoods-list clearfix" style="margin-left: 0; margin-left 0.5s ease">
-					<li class="sgoods-item">
-						<div class="sgoods-thumb">
-							<a href=""><img src="/homes/img/icon/holder_110.png"></a>
-						</div>
-						<div class="goods-title">
-							<a href="" class="title">产品1</a>
-						</div>
-						<p class="goods-info">4100mAh超长续航，多彩金属</p>
-						<p class="goods-price">1440元</p>
+					@foreach ($stars as $k => $v)
+						<li class="sgoods-item">
+							<div class="sgoods-thumb">
+								<a href="/goods/{{$v->id}}"><img src="{{$v->fig}}"></a>
+							</div>
+							<div class="goods-title" style="margin-top: 10px;">
+								<a href="" class="title" style="font-size: 12px;">{{$v->title}}</a>
+							</div>
+							<p class="goods-info" style="line-height: 30px;font-size: 13px;color: #b0b0b0;">{{$v->con}}</p>
+							<p class="goods-price">{{$v->price}}</p>
 
-					</li>
-					<li class="sgoods-item">
-						<div class="sgoods-thumb">
-							<a href=""><img src="/homes/img/icon/holder_110.png"></a>
-						</div>
-						<div class="goods-title">
-							<a href="" class="title">产品2</a>
-						</div>
-						<p class="goods-info">4100mAh超长续航，多彩金属</p>
-						<p class="goods-price">1440元</p>
-					</li><li class="sgoods-item">
-						<div class="sgoods-thumb">
-							<a href=""><img src="/homes/img/icon/holder_110.png"></a>
-						</div>
-						<div class="goods-title">
-							<a href="" class="title">产品3</a>
-						</div>
-						<p class="goods-info">4100mAh超长续航，多彩金属</p>
-						<p class="goods-price">1440元</p>
-					</li><li class="sgoods-item">
-						<div class="sgoods-thumb">
-							<a href=""><img src="/homes/img/icon/holder_110.png"></a>
-						</div>
-						<div class="goods-title">
-							<a href="" class="title">产品4</a>
-						</div>
-						<p class="goods-info">4100mAh超长续航，多彩金属</p>
-						<p class="goods-price">1440元</p>
-					</li><li class="sgoods-item">
-						<div class="sgoods-thumb">
-							<a href=""><img src="/homes/img/icon/holder_110.png"></a>
-						</div>
-						<div class="goods-title">
-							<a href="" class="title">产品5</a>
-						</div>
-						<p class="goods-info">4100mAh超长续航，多彩金属</p>
-						<p class="goods-price">1440元</p>
-					</li><li class="sgoods-item">
-						<div class="sgoods-thumb">
-							<a href=""><img src="/homes/img/icon/holder_110.png"></a>
-						</div>
-						<div class="goods-title">
-							<a href="" class="title">产品6</a>
-						</div>
-						<p class="goods-info">4100mAh超长续航，多彩金属</p>
-						<p class="goods-price">1440元</p>
-					</li><li class="sgoods-item">
-						<div class="sgoods-thumb">
-							<a href=""><img src="/homes/img/icon/holder_110.png"></a>
-						</div>
-						<div class="goods-title">
-							<a href="" class="title">产品7</a>
-						</div>
-						<p class="goods-info">4100mAh超长续航，多彩金属</p>
-						<p class="goods-price">1440元</p>
-					</li><li class="sgoods-item">
-						<div class="sgoods-thumb">
-							<a href=""><img src="/homes/img/icon/holder_110.png"></a>
-						</div>
-						<div class="goods-title">
-							<a href="" class="title">产品8</a>
-						</div>
-						<p class="goods-info">4100mAh超长续航，多彩金属</p>
-						<p class="goods-price">1440元</p>
-					</li><li class="sgoods-item">
-						<div class="sgoods-thumb">
-							<a href=""><img src="/homes/img/icon/holder_110.png"></a>
-						</div>
-						<div class="goods-title">
-							<a href="" class="title">产品9</a>
-						</div>
-						<p class="goods-info">4100mAh超长续航，多彩金属</p>
-						<p class="goods-price">1440元</p>
-					</li><li class="sgoods-item">
-						<div class="sgoods-thumb">
-							<a href=""><img src="/homes/img/icon/holder_110.png"></a>
-						</div>
-						<div class="goods-title">
-							<a href="" class="title">产品10</a>
-						</div>
-						<p class="goods-info">4100mAh超长续航，多彩金属</p>
-						<p class="goods-price">1440元</p>
-					</li>
+						</li>
+					@endforeach
 				</ul>
 			</div>
 		</div>

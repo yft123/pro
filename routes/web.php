@@ -36,7 +36,7 @@ Route::group(['middleware'=>'login'],function(){
 	Route::resource('/core','CoreController');
 	//地址
 	Route::resource('/address','AddressController');
-	Route::resource('/getv','AddressController$getv');
+	Route::get('/getv','AddressController@getv');
 
 //注册
 Route::get('/home/registered','HomeController@registered');

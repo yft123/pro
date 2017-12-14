@@ -6,6 +6,7 @@
 @stop
 <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="/homes/css/core/dz.css">
+<script type="text/javascript" src="/homes/js/jquery-3.2.1.js"></script>
 <script type="text/javascript">
 	window.onload=function(){
 	var item_new=document.getElementById("item_new");
@@ -32,6 +33,18 @@
 	cancel.onclick=function(){
 		item_new_info.parentNode.style.display="none";
 	}
+	
+	function init() {
+		$.ajax({
+			type:"get",
+			url:"/getv",
+			data:{pid:0},
+			success:function(data){
+				console.log(data);
+			}
+		})
+	}
+	init();
 }
 </script>
 	<div class="ddzxbt">收获地址</div>
@@ -112,64 +125,3 @@
 	    </div>
 	</div>
 @stop
-
-<script>
-function init() {
-    //
-    $.ajax({
-        type:'get',
-        url: '/getarea',
-        dataType:'json',
-        data: {pid:0},
-        success: function(data){
-            for(var i=0;i<data.length;i++){
-                var option = $('<option value="'+data[i].id+'">'+data[i].area_name+'</option>')
-                //将option插入到省的select中
-                $('select[name=province]').append(option);
-            }
-        }
-    })
-}
-init();
-
-$('select[name=province]').change(function(){
-    $('select[name=city]').html('<option value="">请选择</option>')
-    //获取当前省的id
-    var id = $(this).val();
-    //发送ajax获取当前省所对应的市的信息
-    $.ajax({
-        type:'get',
-        url: '/getv',
-        dataType:'json',
-        data: {pid:id},
-        success: function(data){
-            for(var i=0;i<data.length;i++){
-                var option = $('<option value="'+data[i].id+'">'+data[i].area_name+'</option>')
-                //将option插入到省的select中
-                $('select[name=city]').append(option);
-            }
-        }
-    })
-});
-
-$('select[name=city]').change(function(){
-    $('select[name=xian]').html('<option value="">请选择</option>')
-    //获取当前省的id
-    var id = $(this).val();
-    //发送ajax获取当前省所对应的市的信息
-    $.ajax({
-        type:'get',
-        url: '/getarea',
-        dataType:'json',
-        data: {pid:id},
-        success: function(data){
-            for(var i=0;i<data.length;i++){
-                var option = $('<option value="'+data[i].id+'">'+data[i].area_name+'</option>')
-                //将option插入到省的select中
-                $('select[name=xian]').append(option);
-            }
-        }
-    })
-});
-
-</script>

@@ -32,7 +32,7 @@
 						<li><a href="">现金券</a></li>
 						<li><a href="">喜欢的商品</a></li>
 						<li><a href="">优惠券</a></li>
-						<li><a href="/home/dz">收货地址</a></li>
+						<li><a href="/address">收货地址</a></li>
 					</ul>
 				</div>
 				<div class="ddzx">售后服务</div>
