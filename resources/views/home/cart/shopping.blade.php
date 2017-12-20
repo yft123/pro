@@ -9,7 +9,7 @@
 	<script type="text/javascript">
 		window.onload=function(){
 		      var a=document.getElementById('box');
-		      var box=document.getElementsByName("checkbox[]");
+		      var box=document.getElementsByClassName("quanxuan");
 		      var len=box.length;
 		      var flag=true;
 		      a.onclick=function(){
@@ -26,6 +26,27 @@
 		      		}
 		    	}
     	}
+
+    	$(function(){
+    		 $('.del').click(function(){ 
+	      //获取相关信息
+		        var cid = $(this).attr('cid');
+		        var dd = $(this).parents('.content2');
+		        //发送请求
+		        $.ajax({
+		            type:'get',
+		            url: '/cart/delete',
+		            data: {'cid':cid},
+		            success: function(data){
+		                if(data == '1') {
+		                    dd.fadeOut(1000,function(){
+		                        alert('移出成功!!!');
+		                    });
+		                }
+		            }
+		        })
+    		});
+    	})
 
     	
 	</script>
@@ -69,7 +90,7 @@
 	        </div>
 	    </div>
 	</div>
-	<form action="/order" method="post">
+	<form action="/order/confirm" method="post">
 		<div class="gwcxqbj">
 			<div class="gwcxd center">
 				<div class="top2 center">
@@ -86,15 +107,13 @@
 				@foreach ($goods as $k => $v)
 				<div class="content2 center">
 					<div class="sub_content fl ">
-						<input type="checkbox" class="quanxuan goodsCheck" name="checkbox[]" value="{{$v->id}}">
+						<input type="checkbox" class="quanxuan goodsCheck" name="data[{{$v->id}}][id]" value="{{$v->goods_id}}">
 					</div>
 					<div class="sub_content fl"><img src="{{$v->d->fig}}" width="35" height="35"></div>
 					<div class="sub_content fl ft20">{{$v->d->title}}</div>
 					<div class="sub_content fl">{{$v->d->price}}</div>
 					<div class="shop-arithmetic fl">
-						<a href="javascript:;" class="minus" style="text-decoration: none;">-</a>
-						<span class="num">1</span>
-						<a href="javascript:;" class="plus" style="text-decoration: none;">+</a>
+						<input type="text" name="data[{{$v->id}}][num]" class="num" value="1">
 					</div>
 					<div class="sub_content fl totle">{{$v->d->price}}</div>
 					<div class="sub_content fl">
@@ -112,9 +131,9 @@
 						<li><a href="/home/lists">继续购物</a></li>
 					</ul>
 				</div>
+				{{csrf_field()}}
 				<div class="jiesuan fr">
-					<div class="jiesuanjiage fl">合计（不含运费）：<span id="susum">2499.00元</span></div>
-					<div class="jsanniu fr"><input class="jsan" type="submit" name="checkbox" value="去结算"></div>
+					<div class="jsanniu fr"><input class="jsan" type="submit" value="去结算"></div>
 					<div class="clear"></div>
 				</div>
 				<div class="clear"></div>

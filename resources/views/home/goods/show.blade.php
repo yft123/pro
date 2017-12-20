@@ -51,11 +51,11 @@
                             <!--主体开始-->
                             <div class="J_main">
                                 <!--分仓地址开始-->
-                                <div class="address-wrap">
+                                <!-- <div class="address-wrap">
                                     
-                                </div>
-                                <!--产品版本开始-->
-                                <div class="list-wrap">
+                                </div> -->
+                                <input type="hidden" name="num" value="1">
+                                <div class="list-wrap" style="margin-top: 50px;">
                                     <div class="pro">
                                         <div class="pro-title">选择颜色</div>
                                         <ul class="ul-list">

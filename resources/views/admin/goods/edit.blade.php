@@ -32,20 +32,10 @@
                       <input type="text" class="form-control" name="kucun" value="{{$goods->kucun}}">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">位置</label>
-                  <!-- <input type="text" class="form-control" name="path"> -->
-                  <select class="form-control" name="path" id="abc">
-                        <option value="">{{$goods->path}}</option>
-                        <option>小米明星单品</option>
-                        <option>家电</option>
-                        <option>智能</option>
-                    </select>
-              </div>
-                <div class="form-group">
                     <label for="exampleInputPassword1">颜色</label>
                       <!-- <input type="text" class="form-control" name="color" value="{{$goods->color}}"> -->
                       <select class="form-control" style="width: 150px;" name="color">
-                          <option value="">{{$goods->color}}</option>
+                          <option value="{{$goods->color}}"></option>
                           <option>黑色</option>
                           <option>白色</option>
                           <option>蓝色</option>

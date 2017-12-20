@@ -93,23 +93,15 @@
             <li class="sub-menu">
                 <a href="javascript:;" class="">
                     <i class="icon_genius"></i>
-                    <span>明星手机管理</span>
+                    <span>视频管理</span>
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-                    <li><a class="" href="/Singlegoods/create">商品添加</a></li>                          
-                    <li><a class="" href="/Singlegoods">商品列表</a></li>
+                    <li><a class="" href="/video/create">视频添加</a></li>                          
+                    <li><a class="" href="/video">视频列表</a></li>
                 </ul>
-            </li>              
-            
-            
+            </li> 
         </ul>
-
-                       
-           
-            
-            
-       
         <!-- 侧边 end-->
     </div>
 

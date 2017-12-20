@@ -187,7 +187,7 @@
 }
 
 .gwcxqbj .gwcxd .content2 .sub_content:nth-of-type(6){
-	margin-left: 100px;
+	margin-left: 120px;
 	color:#ff6700;
 	text-align: center;
 }
@@ -210,40 +210,23 @@
 	background: #e0e0e0;
 }
 .shop-arithmetic{
-	width:84px;
+	width:50px;
+	text-align:center;
 	box-sizing:border-box;
 	white-space:nowrap;
 	border:1px solid #e0e0e0; 
 	margin-top: 50px; 
 	margin-left: 100px;
 }
-.shop-arithmetic a{
-	display:inline-block;
-	width:23px;
-	height:22px;
-	line-height:22px;
-	text-align:center;
-	background:#fff;
-	font-size:16px;
-}
-.shop-arithmetic .minus{
-	border-right:1px solid #e0e0e0;
-}
-.shop-arithmetic .failed{
-	color:#d1d1d1;
-}
-.shop-arithmetic .plus{
-	border-left:1px solid #e0e0e0;
-}
+
 .shop-arithmetic .num{
-	width:32px;
+	width:30px;
 	text-align:center;
 	border:none;
 	display: inline-block;
 	height:100%;
 	box-sizing:border-box;
 	vertical-align:top;
-	margin:0 -6px;
 }
 /*结算单*/
 .jiesuandan{width:1226px;

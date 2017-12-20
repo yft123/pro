@@ -34,7 +34,14 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputFile" style="color: #000;">图片位置</label>
-                <input type="text" name="path"  style="color: #000;">
+                <select name="path">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>家电</option>
+                  <option>智能</option>
+                  <option>搭配</option>
+                  <option>周边</option>
+                </select>
               </div> 
               {{csrf_field()}}        
               <button type="submit" class="btn btn-primary">添加</button>

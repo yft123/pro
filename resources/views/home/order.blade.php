@@ -55,8 +55,56 @@
 			<div class="rtcont fr">
 				@section('con')
 				<div class="ddzxbt">交易订单</div>
+				@foreach ($order as $k => $v)
+					<div class="ddxq">
+						<div class="ddbh fl">订单号:{{$v->danhao}}</div>
+						<div class="ztxx fr">
+							<ul>
+								<li>待发货</li>
+								<li>{{$v->addtime}}</li>
+								<li><a href="">订单详情&gt;</a></li>
+								<div class="clear"></div>
+							</ul>
+						</div>
+						<div class="clear"></div>
+					</div>
+				@endforeach
 				@show
 			</div>
 		</div>
 	</div>
 @endsection
+
+<style type="text/css">
+	.grzxbj .selfinfo .rtcont .ddxq{
+	width: 938px;
+	height: 120px;
+	line-height: 120px;
+	font-size: 17px;
+	color:rgb(117,117,117); 
+	border-bottom: 1px solid #ccc;
+	padding-left: 40px;
+}
+.grzxbj .selfinfo .rtcont .ddxq .ddspt{
+	width: 80px;
+	height: 80px;
+	margin: 19px 25px 0 0;
+	border:1px solid #aaa;
+}
+.grzxbj .selfinfo .rtcont .ddxq .ztxx ul li{
+	display: inline-block;
+	width: 180px;
+	height: 60px;
+	line-height:60px;
+	float: left;
+	border-left:1px solid #aaa; 
+	margin-top: 30px;
+	text-align: center;
+}
+.grzxbj .selfinfo .rtcont .ddxq .ztxx ul li a{
+	color:rgb(117,117,117);
+}
+.grzxbj .selfinfo .rtcont .ddxq .ztxx ul li a:hover{
+	color:#ff6700;
+}
+</style>

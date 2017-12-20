@@ -33,19 +33,60 @@
 	cancel.onclick=function(){
 		item_new_info.parentNode.style.display="none";
 	}
-	
+}
+$(function(){
 	function init() {
 		$.ajax({
 			type:"get",
 			url:"/getv",
-			data:{pid:0},
+			dataType:'json',
+			data: {pid:0},
 			success:function(data){
-				console.log(data);
+				for(var i=0;i<data.length;i++){
+	                var option = $('<option value="'+data[i].id+'">'+data[i].area_name+'</option>')
+	                $('select[name=province]').append(option);
+            	}
 			}
 		})
 	}
 	init();
-}
+	$('select[name=province]').change(function(){
+		$('select[name=city]').html('<option value="">请选择</option>')	
+	    var id = $(this).val();
+	    $.ajax({
+	        type:'get',
+	        url: '/getv',
+	        dataType:'json',
+	        data: {pid:id},
+	        success: function(data){
+	            for(var i=0;i<data.length;i++){
+	                var option = $('<option value="'+data[i].id+'">'+data[i].area_name+'</option>')
+	                $('select[name=city]').append(option);
+            	}
+	        }
+    	})
+	});
+
+	$('select[name=city]').change(function(){
+		$('select[name=xian]').html('<option value="">请选择</option>')	
+	    var id = $(this).val();
+	    $.ajax({
+	        type:'get',
+	        url: '/getv',
+	        dataType:'json',
+	        data: {pid:id},
+	        success: function(data){
+	            for(var i=0;i<data.length;i++){
+	                var option = $('<option value="'+data[i].id+'">'+data[i].area_name+'</option>')
+	                $('select[name=xian]').append(option);
+            	}
+	        }
+    	})
+	});
+})
+	
+
+
 </script>
 	<div class="ddzxbt">收获地址</div>
 	<div class="box-bd">
@@ -65,13 +106,13 @@
 	            	<form action="/address" method="post">
 		                  <div class="form-group">
 		                    <label for="exampleInputEmail1">姓名</label>
-		                    <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="" style="width: 610px;margin-left: 10px;">
+		                    <input type="text" name="username" class="form-control" style="width: 610px;margin-left: 10px;">
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="exampleInputEmail1">收货地址</label>
 		                    <div class="clearfix"></div>
 		                    <div class='col-md-4'>
-		                        <select name="province" id="" class="form-control " name="province">
+		                        <select name="province" id="" class="form-control ">
 		                            <option value="">请选择</option>
 		                        </select>
 		                    </div>
@@ -89,7 +130,7 @@
 		                  <div class="clearfix"></div>
 		                  <div class="form-group">
 		                    <label for="exampleInputEmail1">详细地址</label>
-		                    <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="" style="width: 610px;height:60px;margin-left: 10px;">
+		                    <input type="text" name="detailed" class="form-control" id="exampleInputEmail1" placeholder="" style="width: 610px;height:60px;margin-left: 10px;">
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="exampleInputEmail1">手机号</label>
@@ -105,23 +146,35 @@
                 	</form>
 	            </div>
 	        </div>
-	        <!-- <div class="address-item">
-	            <dl>
-	                <dt>
-						<em class="uname">尹飞腾</em>
-	                </dt>
-	                <dd class="utel">150****9950</dd>
-	                <dd class="uaddress">
-	                	河北 衡水市 武强县                                        武强镇                                        
-	                	<br>
-	                	武强镇北牌村 (053300)
-	            	</dd>
-	            </dl>
-	            <div class="actions">
-	                <a class="modify">修改</a>
-	                <a class="modify">删除</a>
-	            </div>
-	        </div> -->
+	        @if(count($address) > 0)
+		        @foreach ($address as $k => $v)
+			        <div class="address-item">
+			            <dl>
+			                <dt>
+								<em class="uname">{{$v->username}}</em>
+			                </dt>
+			                <dd class="utel">{{$v->phone}}</dd>
+			                <dd class="uaddress">
+			                	{{$v->pname}} {{$v->cname}} {{$v->xname}}     
+			                	<br>
+			                	{{$v->detailed}}
+			            	</dd>
+			            </dl>
+			            <div class="actions">
+			                <a class="modify" href="/address/{{$v->id}}/edit" style="float: left;">修改</a>
+			                <form class="del" action="/address/{{$v->id}}" method="post" style="float: left;">
+		                      {{method_field('DELETE')}}
+		                      {{csrf_field()}}
+		                    	<button class="">删除</button>
+		                    </form>
+			                <!-- <a class="modify">删除</a> -->
+			            </div>
+			        </div>
+			        <script type="text/javascript">
+			        	$('.address-item').
+			        </script>
+		        @endforeach
+	        @endif
 	    </div>
 	</div>
 @stop

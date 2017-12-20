@@ -77,35 +77,24 @@
                     <!-- alert notification end-->
                     <!-- user login dropdown start-->
                     <li class="dropdown">
+                        <?php 
+                          $user = DB::table('user')->first();
+                        ?>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="/admins/img/avatar1_small.jpg">
+                                <img alt="" src="{{$user->img}}" width="40" height="40">
                             </span>
-                            <span class="username">Jenifer Smith</span>
+                            <span class="username">{{$user->username}}</span>
                             <b class="caret"></b>
                         </a>
+                        
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
-                                <a href="#"><i class="icon_profile"></i> My Profile</a>
+                                <a href="/user/{{$user->id}}/edit"><i class="icon_profile"></i>修改信息</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon_chat_alt"></i> Chats</a>
-                            </li>
-                            <li>
-                                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
-                            </li>
-                            <li>
-                                <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-                            </li>
-                            <li>
-                                <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
+                                <a href="/admin/login"><i class="icon_mail_alt"></i> quit</a>
                             </li>
                         </ul>
                     </li>
@@ -140,7 +129,7 @@
             @endif
             @section('content')
               <div class="container">
-                  <!-- <div class="main_top">
+                  <div class="main_top">
                     <div class="main_left fl span6">
                         <div class="box pr5">
                           <div class="box_border">
@@ -148,7 +137,7 @@
                               <div class="box_top_l fl"><b class="pl15">开发团队</b></div>
                               <div class="box_top_r fr pr15"><a href="#" class="color307fb1">更多</a></div>
                             </div>
-                            <div class="box_center">08152班</div>
+                            <div class="box_center">PHP就业班小组</div>
                           </div>
                         </div>
                     </div>
@@ -161,9 +150,11 @@
                         </div>
                   
                     </div>
-
+                    <div>
+                        <img src="">
+                    </div>
                     <div class="clear"></div>
-                  </div> -->
+                  </div>
               </div>
             @show
             

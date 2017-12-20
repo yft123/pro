@@ -14,7 +14,18 @@ class AddressController extends Controller
      */
     public function index()
     {
-        return view('home.address.dz');
+
+        $nava = DB::table('goods')->where('fl_id','11')->paginate(5);
+        $navb = DB::table('goods')->where('fl_id','11')->skip(6)->take(5)->get();
+        $navc = DB::table('goods')->where('fl_id','20')->paginate(4);
+        $address = DB::table('address')->where('user_id', session('id'))->get();
+        foreach ($address as $key => &$value) {
+            $value->pname = DB::table('areas')->where('id',$value->province)->value('area_name');
+            $value->cname = DB::table('areas')->where('id',$value->city)->value('area_name');
+            $value->xname = DB::table('areas')->where('id',$value->xian)->value('area_name');
+        }
+        $order = DB::table('dingdans')->where('status','1')->get();
+        return view('home.address.dz',compact('address','nava','navb','navc','order'));
     }
 
     /**
@@ -36,6 +47,14 @@ class AddressController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->except(['_token']);
+        // dd($data);
+        $data['user_id'] = session('id');
+        if(DB::table('address')->insert($data)) {
+            return back()->with('msg','地址添加成功');
+        }else{
+            return back()->with('msg','添加失败!!');
+        }
     }
 
     /**
@@ -58,6 +77,7 @@ class AddressController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -81,13 +101,17 @@ class AddressController extends Controller
     public function destroy($id)
     {
         //
+        if(DB::table('address')->where('id', $id)->delete()) {
+            return back()->with('msg','删除成功');
+        }else{
+            return back()->with('msg','删除失败!!');
+        }
     }
 
     public function getv(Request $request)
     {
         $pid = $request->pid;
         $areas = DB::table('areas')->where('area_parent_id',$pid)->get();
-
         return $areas->toJson();
     }
 }

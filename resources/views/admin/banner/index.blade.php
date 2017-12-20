@@ -42,7 +42,7 @@
               		@foreach ($banner as $k => $v)
               		<tr class="col-md-12">
                  		<td class="col-md-2">{{$v->id}}</td>
-                      <td class="col-md-3"><img width="50" src="{{$v->img}}" alt=""></td>
+                      <td class="col-md-3"><img width="50" height="50" src="{{$v->img}}" alt=""></td>
                  		 <td class="col-md-3">{{$v->time}}</td>
                  		<td class="col-md-2">{{$v->status}}</td>
                  		<td>

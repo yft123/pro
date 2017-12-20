@@ -32,12 +32,12 @@
         				<a href="javascript:;" class="nav-link">扫码登录</a>
         			</div>
         		</div>
-        		<form class="static_form" method="post" action="">
+        		<form class="static_form" method="post" action="/home">
 					<div class="field">
 						<label>
 							<img src="/Homes/img/login/yh.png" title="用户名">
 						</label>
-						<input name="user" class="logo_text" maxlength="32" placeholder="会员名" type="text" id="user"> 
+						<input name="phone" class="logo_text" maxlength="32" placeholder="会员名" type="text" id="user"> 
 						<div style="height: 10px;" id="t_user"></div>
 					</div>
 					<div class="field">

@@ -217,13 +217,18 @@
 	// 导航条
 	$nav = $(".header-nav .item")
 	$mainnav = $(".main-nav")
-	$nav.hover(function(){
-		set = setTimeout(function(){
-			$mainnav.slideDown();
-		},800)
-	},function(){
-		clearTimeout(set);
-		$mainnav.mouseleave(function(){
-			$mainnav.slideUp();
-		})
-	})
+
+	$nav.mouseover(function(){
+		
+		var i = $(this).index()-1;
+		//根据指定的索引匹配对应的div盒子
+		$(".main-nav").eq(i).css('display','block').siblings(".main-nav").css('display','none');
+		
+	});
+	$(".main-nav").mouseleave(function(){
+		
+		var i = $(this).index();
+		//根据指定的索引匹配对应的div盒子
+		$(this).css('display','none');
+	});
+		

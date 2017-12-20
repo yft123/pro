@@ -34,17 +34,15 @@
               		<tr>
               			<th> ID</th>
                  		<th> 用户名</th>
-                 		<th> 手机号</th>
                  		<th> 头像</th>
                  		<th> 操作</th>
               		</tr>
-                  @if(count($users) > 0)
-              		@foreach ($users as $k => $v)
+                  @if(count($user) > 0)
+              		@foreach ($user as $k => $v)
               		<tr class="col-md-12">
                  		<td class="col-md-2">{{$v->id}}</td>                 		
                  		<td class="col-md-4">{{$v->username}}</td>
-                 		<td class="col-md-4">{{$v->tel}}</td>
-                 		<td class="col-md-1"><img width="30" src="{{$v->file}}" alt=""></td>
+                 		<td class="col-md-1"><img width="30" src="{{$v->img}}" alt=""></td>
                  		<td>
                   		<div class="btn-group">
                       		<a class="btn btn-primary" href="/user/{{$v->id}}/edit"><i class="icon_plus_alt2"></i></a>
@@ -69,7 +67,7 @@
         	<div class="row">
                         <div class="col-lg-12 text-right">
                             <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
-                                {{ $users->appends(['num'=>$num, 'keywords'=>$keywords])->links() }}
+                                {{ $user->appends(['num'=>$num, 'keywords'=>$keywords])->links() }}
                             </div>
                         </div>
                     </div>

@@ -32,16 +32,6 @@
                     <input type="text" class="form-control" name="kucun">
               </div>
               <div class="form-group">
-                  <label for="exampleInputPassword1">位置</label>
-                  <!-- <input type="text" class="form-control" name="path"> -->
-                  <select class="form-control" name="path" id="abc">
-                        <option value=""></option>
-                        <option>小米明星单品</option>
-                        <option>家电</option>
-                        <option>智能</option>
-                    </select>
-              </div>
-              <div class="form-group">
                     <label for="exampleInputPassword1">商品分类</label>
                     <div>
                     <select class="form-control" name="fl_id">
@@ -52,6 +42,22 @@
                     </select>
                     </div>
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">位置</label>
+                  <!-- <input type="text" class="form-control" name="path"> -->
+                  <select class="form-control" name="path" id="abc">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>jhot</option>
+                        <option>zhot</option>
+                        <option>dhot</option>
+                        <option>zhoubian</option>
+                    </select>
+              </div>
               <div class="form-group pull-left">
                   <label for="exampleInputPassword1">颜色</label>
                   <select class="form-control" style="width: 150px;" name="color">
@@ -61,6 +67,7 @@
                     <option>蓝色</option>
                     <option>金色</option>
                     <option>红色</option>
+                    <option>灰色</option>
                     <option>银色</option>
                     <option>透明</option>
                   </select>

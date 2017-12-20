@@ -46,7 +46,7 @@ class GoodsController extends Controller
     {
         $cates = DB::table('cates')->get(); 
         //分配变量 解析模板
-        return view('admin.goods.create', ['cates'=>$cates]);
+        return view('admin.goods.create', compact('cates'));
     }
 
     /**
@@ -113,8 +113,10 @@ class GoodsController extends Controller
     {
          $goods = DB::table('goods')->where('id',$id)->first();
         $goods_pic = DB::table('goods_pic')->where('goods_id', $id)->get();
-
-        return view('home.goods.show', compact('goods','goods_pic'));
+        $nava = DB::table('goods')->where('fl_id','11')->paginate(5);
+        $navb = DB::table('goods')->where('fl_id','11')->skip(6)->take(5)->get();
+       $navc = DB::table('goods')->where('fl_id','20')->paginate(4);
+        return view('home.goods.show', compact('goods','goods_pic','nava','navb','navc'));
     }
 
     /**
@@ -209,12 +211,16 @@ class GoodsController extends Controller
 
     public function lists()
     {
+        $nava = DB::table('goods')->where('fl_id','11')->paginate(5);
         $goods = DB::table('goods')
                 ->where('status',1)
                 ->select('id','title','price','fig')
                 ->orderBy('id','desc')
                 ->paginate(30);
-        return view('home.goods.lists',compact('goods'));
+         $nava = DB::table('goods')->where('fl_id','11')->paginate(5);
+       $navb = DB::table('goods')->where('fl_id','11')->skip(6)->take(5)->get();
+        $navc = DB::table('goods')->where('fl_id','20')->paginate(4);
+        return view('home.goods.lists',compact('goods','nava','navb','navc'));
     }
 
 }

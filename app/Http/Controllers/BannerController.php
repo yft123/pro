@@ -106,8 +106,8 @@ class BannerController extends Controller
     public function update(Request $request, $id)
     {
         //获取数据
-        $data = $request->only(['id','img','time','status']);
-        
+        $data = $request->only(['id','img','time','status','path']);
+        $data['time'] = date('Y-m-d H:i:s');
         //图片上传
         //文件上传
         if($request->hasFile('img')) {
@@ -123,7 +123,6 @@ class BannerController extends Controller
             //获取文件的路径
             $data['img'] = trim($dir.'/'.$name,'.');
         }
-             $data['time'] = time();
         //更新
         if(DB::table('banner')->where('id',$id)->update($data)) {
             return redirect('/banner')->with('msg','更新成功');

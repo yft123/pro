@@ -77,14 +77,15 @@ a{
 }
 
 .address-item .modify{
-	display: none;
 	margin-left: 10px;
 	color: #ff6700;
 }
-
-
-
-
+button{
+	border: none;
+	background: none;
+	color: #ff6700;
+	line-height: 15px;
+}
 /*点击添加css样式*/
 
 #item_new_div{

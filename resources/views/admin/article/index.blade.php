@@ -1,12 +1,12 @@
 @extends('admin.index')
 
 @section('title')
-<h3 class="page-header"><i class="fa fa-laptop"></i>文章列表</h3>
+<h3 class="page-header"><i class="fa fa-laptop"></i>文章添加</h3>
 @endsection
 
 @section('content')
 <div class="row">
-	<form action="/article" class="navbar-form">
+	<form action="/user" class="navbar-form">
               <div class="row">
                   <div class="col-sm-6">
                       <div class="dataTables_length" id="dataTables-example_length">每页显示
@@ -26,67 +26,65 @@
                       </div>
                   </div>
               </div>
-          </form>
-  	<div class="col-lg-12">
-      	<section class="panel">          	          
-          	<table class="table table-striped table-advance table-hover">
-           		<tbody>
-              		<tr>
-              			<th> ID</th>
-                 		<th> 商品名称</th>                 		
-                 		<th> 商品现价</th>
-                    <th> 商品原价</th>
-                    <th> 商品图片</th>
-                 		<th> 操作</th>
-              		</tr>
-                  @if(count($articles) > 0)
-              		@foreach ($articles as $k => $v)
-              		<tr class="col-md-12">
-                 		<td class="col-md-2">{{$v->id}}</td>                 		
-                 		<td class="col-md-3">{{$v->title}}</td>
-                    <td class="col-md-2">{{$v->xianjia}}</td>
-                    <td class="col-md-2">{{$v->yuanjia}}</td>
-                    <td class="col-md-2"><img width="35" src="{!!$v->img!!}" alt=""></td>
-                    <td>
-                      <div class="btn-group">
-                          <a class="btn btn-primary" href="/article/{{$v->id}}/edit"><i class="icon_plus_alt2"></i></a>
-                            
-                            <form class="del" action="/article/{{$v->id}}" method="post" style="float:left">
-                            {{method_field('DELETE')}}
-                            {{csrf_field()}}
-                            <button class="btn btn-danger " href="#"><i class="icon_close_alt2"></i></button>
-                            </form>
-                      </div>
-                    </td>
-                 		
-                 		
-              		</tr>
-              		@endforeach
-              		@else
-                  <tr><td colspan="5" class="text-center">暂无数据</td></tr>
-                  @endif
-	                
-	              </tr>                              
-           		</tbody>
-
-        	</table>
-        	<div class="row">
-              <div class="col-lg-12 text-right">
-                  <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
-                      {{ $articles->appends(['num'=>$num, 'keywords'=>$keywords])->links() }}
-                  </div>
-              </div>
-          </div>
-      	</section>
+	     </form>
+	     <div class="row">
+	     	<div class="col-sm-12">
+	     	<table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 100%;">
+            <thead>
+                <tr role="row">
+                	<th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 175px;">ID</th>
+                	<th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 202px;">标题</th>
+                	<th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 202px;">价格</th>
+                	<th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 151px;">头图</th>
+                	<th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 110px;">操作</th>
+               	</tr>
+            </thead>
+            <tbody>
+            	@if(count($articles) > 0)
+	            	@foreach($articles as $k=>$v)         
+		            <tr class="gradeA odd" role="row">
+			            <td class="sorting_1">{{$v->id}}</td>
+			            <td>{{$v->title}}</td>
+			            <td>{{$v->price}}</td>
+			            <td class="center"><img width="30" src="{{$v->pic}}" alt=""></td>
+			            <td class="center">
+			            	<a class="btn btn-danger pull-left" href="/article/{{$v->id}}/edit">修改</a>
+			            		<form class="del" action="/article/{{$v->id}}" method="post">
+			            		{{method_field('DELETE')}}
+			            		{{csrf_field()}}
+			            	<button class="btn btn-primary">删除</button>
+			           			</form>
+			           </td>
+		            </tr>
+		            @endforeach
+				@else
+	            <tr><td colspan="5" class="text-center">暂无数据</td></tr>
+        		@endif
+        </tbody>
+        </table>
     </div>
+</div>
+        <div class="row">
+        	<div class="col-lg-12 text-right">
+        		<div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
+        			{{ $articles->appends(['num'=>$num, 'keywords'=>$keywords])->links() }}
+        		</div>
+        	</div>
+        </div>
+	</div>      
 </div>
 @endsection
 
 @section('js')
 <script>
-$('.del').submit(function(){
-    if(!confirm('您确定要删除该商品吗?')) return false;
-    
-});
+	$('.del').submit(function(){
+		if(!confirm('您确定要删除该文章么?')) return false;
+	});
 </script>
 @endsection
+
+
+
+
+
+
