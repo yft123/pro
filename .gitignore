@@ -11,3 +11,6 @@ npm-debug.log
 yarn-error.log
 .env
 /public/uploads
+/public/homes/images
+/public/homes/img
+/public/ueditor
